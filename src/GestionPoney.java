@@ -223,6 +223,7 @@ public class GestionPoney {
 					if (mission2.getNom().equals(MissionCommencer))
 						mission2.Commencer(mission2);
 				});
+				break;
 			default:
 
 				return;
