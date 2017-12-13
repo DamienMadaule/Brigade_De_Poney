@@ -43,7 +43,6 @@ public class GestionPoney {
 				String gradePoney = scGradePoney.nextLine();
 				Poney poney = new Poney(nomPoney, gradePoney);
 				poneyList.add(poney);
-				scChoix.close();
 				break;
 
 			case 2:
@@ -52,7 +51,7 @@ public class GestionPoney {
 				String nomBrigade = scBrigade.nextLine();
 				Brigade brigade = new Brigade(nomBrigade);
 				brigadeList.add(brigade);
-				scChoix.close();
+
 				break;
 
 			case 3:
@@ -61,7 +60,7 @@ public class GestionPoney {
 				String nomMission = scMission.nextLine();
 				Mission mission = new Mission(nomMission);
 				missionList.add(mission);
-				scChoix.close();
+
 				break;
 
 			case 4:
@@ -82,7 +81,7 @@ public class GestionPoney {
 							}
 						});
 				});
-				scChoix.close();
+
 				break;
 
 			case 5:
@@ -103,7 +102,7 @@ public class GestionPoney {
 							}
 						});
 				});
-				scChoix.close();
+
 				break;
 
 			case 6:
@@ -131,7 +130,7 @@ public class GestionPoney {
 				 * findBrigade.getNom().equals(ChoixBrigade3)) .findFirst().get(); if (poy !=
 				 * null) { selected.getPoneyList().remove(poy); } }
 				 */
-				scChoix.close();
+
 				break;
 
 			case 7:
@@ -145,22 +144,22 @@ public class GestionPoney {
 						System.out.println("la brigade " + brigade2.getNom() + "a terminé la mission");
 					}
 				});
-				scChoix.close();
+
 				break;
 
 			case 8:
 				poneyList.forEach(poney2 -> System.out.println(poney2.getNom()));
-				scChoix.close();
+
 				break;
 
 			case 9:
 				brigadeList.forEach(brigade2 -> System.out.println(brigade2.getNom()));
-				scChoix.close();
+
 				break;
 
 			case 10:
 				missionList.forEach(mission2 -> System.out.println(mission2.getNom()));
-				scChoix.close();
+
 				break;
 
 			case 11:
@@ -173,7 +172,7 @@ public class GestionPoney {
 						poneyList.remove(poney2);
 					}
 				});
-				scChoix.close();
+
 				break;
 			case 12:
 				System.out.println("Quel brigade voulez-vous supprimer ?");
@@ -185,7 +184,7 @@ public class GestionPoney {
 						brigadeList.remove(brigade2);
 					}
 				});
-				scChoix.close();
+
 				break;
 
 			case 13:
@@ -198,7 +197,7 @@ public class GestionPoney {
 						missionList.remove(mission2);
 					}
 				});
-				scChoix.close();
+
 				break;
 			case 14:
 				System.out.println("Quel est le nom du Troufion ?");
@@ -206,7 +205,7 @@ public class GestionPoney {
 				String nomTroufion = scNomTroufion.nextLine();
 				Troufion troufion = new Troufion(nomTroufion, "Troufion");
 				poneyList.add(troufion);
-				scChoix.close();
+
 				break;
 			case 15:
 				System.out.println("Quel est le nom du chef?");
@@ -214,7 +213,7 @@ public class GestionPoney {
 				String nomChef = scNomChef.nextLine();
 				Chef chef = new Chef(nomChef, "Chef");
 				poneyList.add(chef);
-				scChoix.close();
+
 				break;
 			case 16:
 				System.out.println("Quel mission faut-t-il commencer?");
@@ -225,7 +224,7 @@ public class GestionPoney {
 						mission2.Commencer(mission2);
 				});
 			default:
-				scChoix.close();
+
 				return;
 
 			}
