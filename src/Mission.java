@@ -3,6 +3,16 @@ import java.util.ArrayList;
 public class Mission {
 	private String nom;
 	public ArrayList<Brigade> brigadeList;
+	public boolean enCours;
+	public Chef chef;
+
+	public boolean isEnCours() {
+		return enCours;
+	}
+
+	public void setEnCours(boolean enCours) {
+		this.enCours = enCours;
+	}
 
 	public Mission(String pNom) {
 		brigadeList = new ArrayList<Brigade>();
@@ -39,10 +49,29 @@ public class Mission {
 	public void terminer(Brigade pBrigade) {
 		for (int i = 0; i < brigadeList.size(); i++) {
 			if (pBrigade.getNom().equals(brigadeList.get(i).getNom())) {
-				// brigadeList.remove(pBrigade);
 				pBrigade.setMission(null);
+				if (this.enCours) {
+					this.chef.setPrestige(this.chef.getPrestige() + brigadeList.size());
+					brigadeList.forEach(brigade -> {
+						brigade.getPoneyList().forEach(poney -> {
+							if (poney instanceof Troufion) {
+								((Troufion) poney).setPatate(((Troufion) poney).getPatate() + 1);
+							}
+						});
+					});
+				}
 			}
 		}
 
 	}
+
+	public boolean Commencer(Mission pMission) {
+		if (pMission.chef != null || pMission.brigadeList != null) {
+			return false;
+		} else {
+			pMission.enCours = true;
+			return true;
+		}
+	}
+
 }

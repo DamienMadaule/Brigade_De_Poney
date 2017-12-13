@@ -7,21 +7,29 @@ public class GestionPoney {
 		ArrayList<Poney> poneyList = new ArrayList<Poney>();
 		ArrayList<Brigade> brigadeList = new ArrayList<Brigade>();
 		ArrayList<Mission> missionList = new ArrayList<Mission>();
+		Brigade testBrigade = new Brigade("TestBrigade");
+		brigadeList.add(testBrigade);
+		Mission testMission = new Mission("TestMission");
+		missionList.add(testMission);
 		while (true) {
 			System.out.println("MENU:");
-			System.out.println("Crée un nouveau poney ---------------> 1 ");
-			System.out.println("Crée une brigade --------------------> 2 ");
-			System.out.println("Crée une mission --------------------> 3 ");
+			System.out.println("Créer un nouveau poney --------------> 1 ");
+			System.out.println("Créer une brigade -------------------> 2 ");
+			System.out.println("Créer une mission -------------------> 3 ");
 			System.out.println("Ajouter un poney a une brigade ------> 4 ");
 			System.out.println("Affecter une brigade a une missions -> 5 ");
 			System.out.println("Retire un poney a une brigade -------> 6 ");
 			System.out.println("Terminer une mission ----------------> 7 ");
-			System.out.println("Afficher les poney ------------------> 8 ");
-			System.out.println("Affcher les brigade -----------------> 9 ");
+			System.out.println("Afficher les poneys -----------------> 8 ");
+			System.out.println("Affcher les brigades ----------------> 9 ");
 			System.out.println("Afficher les missions ---------------> 10");
 			System.out.println("Supprimer un poney ------------------> 11");
 			System.out.println("Supprimer une mission ---------------> 12");
 			System.out.println("Supprimer une brigade ---------------> 13");
+			System.out.println("Ajouter un troufion -----------------> 14");
+			System.out.println("Ajouter un chef ---------------------> 15");
+			System.out.println("Commencer une mission ---------------> 16");
+
 			System.out.println("Que voulez-vous faire ?");
 			Scanner scChoix = new Scanner(System.in);
 			int choix = scChoix.nextInt();
@@ -35,6 +43,7 @@ public class GestionPoney {
 				String gradePoney = scGradePoney.nextLine();
 				Poney poney = new Poney(nomPoney, gradePoney);
 				poneyList.add(poney);
+				scChoix.close();
 				break;
 
 			case 2:
@@ -43,6 +52,7 @@ public class GestionPoney {
 				String nomBrigade = scBrigade.nextLine();
 				Brigade brigade = new Brigade(nomBrigade);
 				brigadeList.add(brigade);
+				scChoix.close();
 				break;
 
 			case 3:
@@ -51,6 +61,7 @@ public class GestionPoney {
 				String nomMission = scMission.nextLine();
 				Mission mission = new Mission(nomMission);
 				missionList.add(mission);
+				scChoix.close();
 				break;
 
 			case 4:
@@ -71,6 +82,7 @@ public class GestionPoney {
 							}
 						});
 				});
+				scChoix.close();
 				break;
 
 			case 5:
@@ -91,6 +103,7 @@ public class GestionPoney {
 							}
 						});
 				});
+				scChoix.close();
 				break;
 
 			case 6:
@@ -111,38 +124,43 @@ public class GestionPoney {
 							}
 						});
 				});
+				/*
+				 * Brigade selected = brigadeList.stream() .filter(findBrigade ->
+				 * findBrigade.getNom().equals(ChoixBrigade3)).findFirst().get(); if (selected
+				 * != null) { Poney poy = poneyList.stream().filter(findBrigade ->
+				 * findBrigade.getNom().equals(ChoixBrigade3)) .findFirst().get(); if (poy !=
+				 * null) { selected.getPoneyList().remove(poy); } }
+				 */
+				scChoix.close();
 				break;
 
 			case 7:
-				System.out.println("Quel brigade voulez-vous ?");
-				Scanner scChoixBrigade4 = new Scanner(System.in);
-				String ChoixBrigade4 = scChoixBrigade4.nextLine();
 				System.out.println("Quel missions voulez-vous ?");
 				Scanner scChoixMission2 = new Scanner(System.in);
 				String ChoixMission2 = scChoixMission2.nextLine();
 
-				missionList.forEach(mission2 -> {
-					if (mission2.getNom().equals(ChoixMission2))
-						brigadeList.forEach(brigade2 -> {
-							if (brigade2.getNom().equals(ChoixBrigade4)) {
-								mission2.terminer(brigade2);
-								System.out.println(
-										"la brigade " + brigade2.getNom() + "a terminé la mission" + mission2.getNom());
-							}
-						});
+				brigadeList.forEach(brigade2 -> {
+					if (brigade2.getMission().getNom().equals(ChoixMission2)) {
+						brigade2.setMission(null);
+						System.out.println("la brigade " + brigade2.getNom() + "a terminé la mission");
+					}
 				});
+				scChoix.close();
 				break;
 
 			case 8:
-				poneyList.forEach(System.out::println);
+				poneyList.forEach(poney2 -> System.out.println(poney2.getNom()));
+				scChoix.close();
 				break;
 
 			case 9:
-				brigadeList.forEach(System.out::println);
+				brigadeList.forEach(brigade2 -> System.out.println(brigade2.getNom()));
+				scChoix.close();
 				break;
 
 			case 10:
-				missionList.forEach(System.out::println);
+				missionList.forEach(mission2 -> System.out.println(mission2.getNom()));
+				scChoix.close();
 				break;
 
 			case 11:
@@ -155,6 +173,8 @@ public class GestionPoney {
 						poneyList.remove(poney2);
 					}
 				});
+				scChoix.close();
+				break;
 			case 12:
 				System.out.println("Quel brigade voulez-vous supprimer ?");
 				Scanner scSupBrigade = new Scanner(System.in);
@@ -165,6 +185,7 @@ public class GestionPoney {
 						brigadeList.remove(brigade2);
 					}
 				});
+				scChoix.close();
 				break;
 
 			case 13:
@@ -177,7 +198,34 @@ public class GestionPoney {
 						missionList.remove(mission2);
 					}
 				});
+				scChoix.close();
+				break;
+			case 14:
+				System.out.println("Quel est le nom du Troufion ?");
+				Scanner scNomTroufion = new Scanner(System.in);
+				String nomTroufion = scNomTroufion.nextLine();
+				Troufion troufion = new Troufion(nomTroufion, "Troufion");
+				poneyList.add(troufion);
+				scChoix.close();
+				break;
+			case 15:
+				System.out.println("Quel est le nom du chef?");
+				Scanner scNomChef = new Scanner(System.in);
+				String nomChef = scNomChef.nextLine();
+				Chef chef = new Chef(nomChef, "Chef");
+				poneyList.add(chef);
+				scChoix.close();
+				break;
+			case 16:
+				System.out.println("Quel mission faut-t-il commencer?");
+				Scanner scMissionCommencer = new Scanner(System.in);
+				String MissionCommencer = scMissionCommencer.nextLine();
+				missionList.forEach(mission2 -> {
+					if (mission2.getNom().equals(MissionCommencer))
+						mission2.Commencer(mission2);
+				});
 			default:
+				scChoix.close();
 				return;
 
 			}
