@@ -14,8 +14,24 @@ public class Brigade {
 		return nom;
 	}
 
-	public void setNom(String pNom) {
-		nom = pNom;
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public ArrayList<Poney> getPoneyList() {
+		return poneyList;
+	}
+
+	public void setPoneyList(ArrayList<Poney> poneyList) {
+		this.poneyList = poneyList;
+	}
+
+	public Mission getMission() {
+		return mission;
+	}
+
+	public void setMission(Mission mission) {
+		this.mission = mission;
 	}
 
 	public boolean recruter(Poney pPoney) {
@@ -25,6 +41,7 @@ public class Brigade {
 			}
 		}
 		poneyList.add(pPoney);
+		pPoney.setBrigade(this);
 
 		return true;
 	}
@@ -33,6 +50,7 @@ public class Brigade {
 		for (int i = 0; i < poneyList.size(); i++) {
 			if (pPoney.getNom().equals(poneyList.get(i).getNom())) {
 				poneyList.remove(pPoney);
+				pPoney.setBrigade(null);
 				return true;
 			}
 		}

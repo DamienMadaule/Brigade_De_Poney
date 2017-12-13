@@ -13,15 +13,24 @@ public class Poney {
 		return nom;
 	}
 
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	public String getGrade() {
 		return grade;
 	}
 
-	public void setNom(String pNom) {
-		nom = pNom;
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 
-	public void setGrade(String pGrade) {
-		grade = pGrade;
+	public Brigade getBrigade() {
+		return brigade;
 	}
+
+	public void setBrigade(Brigade brigade) {
+		this.brigade = brigade;
+	}
+
 }

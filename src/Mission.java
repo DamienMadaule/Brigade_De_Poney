@@ -13,8 +13,16 @@ public class Mission {
 		return nom;
 	}
 
-	public void setNom(String pNom) {
-		nom = pNom;
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public ArrayList<Brigade> getBrigadeList() {
+		return brigadeList;
+	}
+
+	public void setBrigadeList(ArrayList<Brigade> brigadeList) {
+		this.brigadeList = brigadeList;
 	}
 
 	public boolean affecter(Brigade pBrigade) {
@@ -24,13 +32,15 @@ public class Mission {
 			}
 		}
 		brigadeList.add(pBrigade);
+		pBrigade.setMission(this);
 		return true;
 	}
 
 	public void terminer(Brigade pBrigade) {
 		for (int i = 0; i < brigadeList.size(); i++) {
 			if (pBrigade.getNom().equals(brigadeList.get(i).getNom())) {
-				brigadeList.remove(pBrigade);
+				// brigadeList.remove(pBrigade);
+				pBrigade.setMission(null);
 			}
 		}
 
