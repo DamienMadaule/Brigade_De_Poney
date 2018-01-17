@@ -1,4 +1,3 @@
-
 public class Troufion extends Poney {
 
 	public Troufion(String pNom, String pGrade) {

@@ -123,13 +123,6 @@ public class GestionPoney {
 							}
 						});
 				});
-				/*
-				 * Brigade selected = brigadeList.stream() .filter(findBrigade ->
-				 * findBrigade.getNom().equals(ChoixBrigade3)).findFirst().get(); if (selected
-				 * != null) { Poney poy = poneyList.stream().filter(findBrigade ->
-				 * findBrigade.getNom().equals(ChoixBrigade3)) .findFirst().get(); if (poy !=
-				 * null) { selected.getPoneyList().remove(poy); } }
-				 */
 
 				break;
 
@@ -137,13 +130,22 @@ public class GestionPoney {
 				System.out.println("Quel missions voulez-vous ?");
 				Scanner scChoixMission2 = new Scanner(System.in);
 				String ChoixMission2 = scChoixMission2.nextLine();
-
-				brigadeList.forEach(brigade2 -> {
-					if (brigade2.getMission().getNom().equals(ChoixMission2)) {
-						brigade2.setMission(null);
-						System.out.println("la brigade " + brigade2.getNom() + "a terminé la mission");
-					}
-				});
+				
+					brigadeList.forEach(brigade2 -> {
+						if(brigade2.getMission() !=null) {
+							if (brigade2.getMission().getNom().equals(ChoixMission2)&& brigade2.getMission().isEnCours()) {
+							brigade2.setMission(null);
+							System.out.println("la brigade " + brigade2.getNom() + "a terminé la mission");
+						}
+							//else {
+							//System.out.println("Personne n'est affecter a cette mission");
+							//}
+						}
+						else {
+							System.out.println("Personne n'est affecter a cette mission");
+							System.out.println("Y a plus d'expection :D");
+						}
+					});
 
 				break;
 

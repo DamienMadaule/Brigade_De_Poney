@@ -4,7 +4,7 @@ public class Brigade {
 	private String nom;
 	public ArrayList<Poney> poneyList;
 	public Mission mission;
-
+	
 	public Brigade(String pNom) {
 		poneyList = new ArrayList<Poney>();
 		nom = pNom;

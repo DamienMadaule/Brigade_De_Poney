@@ -1,4 +1,3 @@
-
 public class Poney {
 	private String nom;
 	private String grade;
